@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddTask</title>
+    {% include 'headlib.html' %}
+    <script>
+        function validateForm() {
+            var x = document.forms["addtaskform"]["task"].value;
+            if (x == "" || x == null) {
+                alert("Name must be filled out");
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div style="padding: 20px;">
+        <a href="/tkb" type="button" class="btn btn-primary">Về trang chủ</a>
+    </div>
+    <div style="text-align: center;padding:30px;">
+        <h1 style="padding: 20px;">Add task</h1>
+        <form name="addtaskform" action="addnewtask" method="POST" onsubmit="return validateForm()" required>
+            {% csrf_token %}
+            <select name="subj">
+                {% for x in listsubj %}
+                <option value="{{x.subj_code}}">{{x.subj_name}}</option>
+                {% endfor %}
+            </select>
+            <input name="task" />
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+        <div style="padding: 30px;">
+            <h3>Task list</h3>
+            <table class="table table-bordered table-striped ">
+                <tr>
+                    <th>Subject</th>
+                    <th>Task</th>
+                    <th>Action</th>
+                </tr>
+                {% for x in listtask|dictsort:"task_subj" %}
+
+                <tr>
+                    {% for y in listsubj %}
+                    {% if x.task_subj == y.subj_code %}
+                    <td>{{y.subj_name}}</td>
+                    {% endif %}
+                    {% endfor %}
+                    <td>{{x.task_content}}</td>
+                    <td><a href="deletetask/{{x.task_id}}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% include 'footlib.html' %}
+</body>
+
+</html>

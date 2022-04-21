@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditSchedule</title>
+    {% include 'headlib.html' %}
+</head>
+
+<body>
+    <div style="padding: 20px;">
+        <a href="/tkb" type="button" class="btn btn-primary">Về trang chủ</a>
+    </div>
+    <div style="text-align: center;padding:30px;">
+        <h1>Edit Schedule</h1>
+        <div class="table-responsive col-md-auto">
+            <table class="table table-bordered table-striped ">
+
+                <tr>
+                    {% for x in listday%}
+                    <th>{{x.day_name}}&nbsp;<a href="updateschedule/{{x.id}}">edit</a></th>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    {% for x in listday%}
+                    {% for y in listsubj%}
+                    {% if x.subj_1 == y.subj_code %}
+                    <td>{{y.subj_name}}</td>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for x in listday%}
+                    {% for y in listsubj%}
+                    {% if x.subj_2 == y.subj_code %}
+                    <td>{{y.subj_name}}</td>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for x in listday%}
+                    {% for y in listsubj%}
+                    {% if x.subj_3 == y.subj_code %}
+                    <td>{{y.subj_name}}</td>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for x in listday%}
+                    {% for y in listsubj%}
+                    {% if x.subj_4 == y.subj_code %}
+                    <td>{{y.subj_name}}</td>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for x in listday%}
+                    {% for y in listsubj%}
+                    {% if x.subj_5 == y.subj_code %}
+                    <td>{{y.subj_name}}</td>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    {% include 'footlib.html' %}
+</body>
+
+</html>

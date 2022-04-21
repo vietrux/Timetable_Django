@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Schedule</title>
+    {% include 'headlib.html' %}
+</head>
+
+<body>
+    <div style="padding: 20px;">
+        <a href="/tkb" type="button" class="btn btn-primary">Về trang chủ</a>
+    </div>
+    <div style="text-align: center;padding:30px;">
+        <h1>Edit One Day</h1>
+        <div class="table-responsive col-md-auto">
+            <form action="updatescheduleprocess/{{day.id}}" method="POST">
+                {% csrf_token %}
+                <table class="table table-bordered table-striped ">
+
+                    <tr>
+                        <th>{{day.day_name}}</th>
+                    </tr>
+
+                    <tr>
+                        {% for y in listsubj%}
+                        {% if day.subj_1 == y.subj_code %}
+                        <td><input name="subj_1" value="{{y.subj_code}}" </td>
+                            {% endif %}
+                            {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for y in listsubj%}
+                        {% if day.subj_2 == y.subj_code %}
+                        <td><input name="subj_2" value="{{y.subj_code}}" </td>
+                            {% endif %}
+                            {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for y in listsubj%}
+                        {% if day.subj_3 == y.subj_code %}
+                        <td><input name="subj_3" value="{{y.subj_code}}" </td>
+                            {% endif %}
+                            {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for y in listsubj%}
+                        {% if day.subj_4 == y.subj_code %}
+                        <td><input name="subj_4" value="{{y.subj_code}}" </td>
+                            {% endif %}
+                            {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for y in listsubj%}
+                        {% if day.subj_5 == y.subj_code %}
+                        <td><input name="subj_5" value="{{y.subj_code}}" </td>
+                            {% endif %}
+                            {% endfor %}
+                    </tr>
+
+                </table>
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    {% include 'footlib.html' %}
+</body>
+
+</html>
