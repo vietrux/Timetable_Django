@@ -24,3 +24,4 @@ For MAC/Linux
 ```
 python3 manage.py runserver
 ```
+and Goto *[http://127.0.0.1:8000/tkb](http://127.0.0.1:8000/tkb)* or *[localhost:8000/tkb](http://localhost:8000/tkb)*
